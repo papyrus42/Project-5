@@ -23,5 +23,10 @@ namespace ClassLibrary
             }
         }
 
+        public ObjectsOnLevel(Objects[] stuff)
+        {
+            stuffOnLevel = stuff;
+            massCount = stuff.Length;
+        }
     }
 }

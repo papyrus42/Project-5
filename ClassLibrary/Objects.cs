@@ -24,5 +24,11 @@ namespace ClassLibrary
             }
         }
 
+        public Objects(string name, Vector2[] vectors)
+        {
+            this.name = name;
+            points = vectors;
+            count = points.Length;
+        }
     }
 }
