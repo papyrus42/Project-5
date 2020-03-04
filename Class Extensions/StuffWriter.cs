@@ -11,7 +11,7 @@ using Microsoft.Xna.Framework.Content.Pipeline.Processors;
 using Microsoft.Xna.Framework.Content.Pipeline.Serialization.Compiler;
 using ClassLibrary;
 
-using TWrite = ClassLibrary.ObjectsOnLevel;
+using TWrite = ClassLibrary.Stuff;
 
 namespace Class_Extensions
 {
@@ -25,16 +25,10 @@ namespace Class_Extensions
 
         protected override void Write(ContentWriter output, TWrite value)
         {
-            output.Write(value.massCount);
-            foreach(Objects stuff in value.stuffOnLevel)
+            output.Write(value.points.Length);
+            foreach(Vector2 p in value.points)
             {
-                output.Write(stuff.name);
-                output.Write(stuff.count);
-                foreach(Vector2 vect in stuff.points)
-                {
-                    output.Write(vect.X);
-                    output.Write(vect.Y);
-                }
+                output.Write(p.X + " " + p.Y);
             }
                 
         }

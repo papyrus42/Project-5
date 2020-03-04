@@ -11,6 +11,36 @@
 #-------------------------------- References --------------------------------#
 
 /reference:..\..\Extensions\bin\Debug\net45\Extensions.dll
+/reference:..\..\Class Extensions\bin\Debug\net45\Class Extensions.dll
 
 #---------------------------------- Content ---------------------------------#
+
+#begin pixel.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:pixel.png
+
+#begin rando boy.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:rando boy.png
+
+#begin stuff.stuff
+/importer:StuffImporter
+/processor:StuffProcessor
+/build:stuff.stuff
 

@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
-using TRead = ClassLibrary.ObjectsOnLevel;
+using TRead = ClassLibrary.Stuff;
 
 namespace ClassLibrary
 {
@@ -15,29 +15,20 @@ namespace ClassLibrary
     {
         protected override TRead Read(ContentReader input, TRead existingInstance)
         {
-            int count = input.ReadInt32();
-            List<Objects> stuff = new List<Objects>();
-            for (int i = 0; i < count; i++)
+            int lines = input.ReadInt32();
+            List<Vector2> vects = new List<Vector2>();
+            for (int i = 0; i < lines; i++)
             {
-                string n = input.ReadString();
-                int c = input.ReadInt32();
-                int readCount = 0;
-                List<Vector2> vects = new List<Vector2>();
-                while (readCount <= c)
-                {
-                    int x = input.ReadInt32();
-                    int y = input.ReadInt32();
-                    Vector2 v = new Vector2(x, y);
-                    vects.Add(v);
-                    readCount += 2;
-                }
-                Vector2[] actualVect = vects.ToArray();
-                Objects newStuff = new Objects(n, actualVect);
-                stuff.Add(newStuff);
+                string cordString = input.ReadString();
+                string[] cords = cordString.Split(new char[] { ' ' });
+                int x = Convert.ToInt32(cords[0]);
+                int y = Convert.ToInt32(cords[1]);
+                vects.Add(new Vector2(x, y));
             }
-            Objects[] actualStuff = stuff.ToArray();
-            ObjectsOnLevel level = new ObjectsOnLevel(actualStuff);
-            return level;
+            Stuff stuff = new Stuff(vects.ToArray());
+            return stuff;
+
+            
         }
     }
 }

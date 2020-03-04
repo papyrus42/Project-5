@@ -10,7 +10,7 @@ using TImport = System.String;
 
 namespace Class_Extensions
 {
-    [ContentImporter(".stuff", DisplayName = "Stuff Importer - Monogame", DefaultProcessor = "StuffProcessor")]
+    [ContentImporter(".stuff", DisplayName = "Stuff Importer", DefaultProcessor = "StuffProcessor")]
     public class StuffImporter: ContentImporter<TImport>
     {
         public override string Import(string filename, ContentImporterContext context)

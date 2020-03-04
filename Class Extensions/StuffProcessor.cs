@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Content.Pipeline.Graphics;
 using ClassLibrary;
 
 using TInput = System.String;
-using TOutput = ClassLibrary.ObjectsOnLevel;
+using TOutput = ClassLibrary.Stuff;
 
 namespace Class_Extensions
 {
@@ -19,30 +19,19 @@ namespace Class_Extensions
         public override TOutput Process(string input, ContentProcessorContext context)
         {
             string[] lines = input.Split(new char[] { '\n' });
-            int end = 0;
-            List<Objects> stuff = new List<Objects>();
-            while(end < input.Length)
+            List<Vector2> vects = new List<Vector2>();
+            for (int i = 0; i < lines.Length; i++)
             {
-                string newObj = lines[end];
-                end++;
-                int howMany = Convert.ToInt32(lines[end]);
-                end++;
-                List<Vector2> vects = new List<Vector2>();
-                for(int i = 0; i <=howMany; i++)
-                {
-                    string[] cords = lines[end].Split(new char[] { ' ' });
-                    Vector2 c = new Vector2(Convert.ToInt32(cords[0]), Convert.ToInt32(cords[1]));
-                    vects.Add(c);
-                    end++;
-                }
-                Vector2[] actualVect = vects.ToArray();
-                Objects newStuff = new Objects(newObj, actualVect);
-                stuff.Add(newStuff);
+                string[] cords = lines[i].Split(new char[] { ' ' });
+                int x = Convert.ToInt32(cords[0]);
+                int y = Convert.ToInt32(cords[1]);
+                Vector2 v = new Vector2(x, y);
+                vects.Add(v);
             }
+            Stuff stuff = new Stuff(vects.ToArray());
+            return stuff;
 
-            Objects[] actualStuff = stuff.ToArray();
-            ObjectsOnLevel level = new ObjectsOnLevel(actualStuff);
-            return level;
+
         }
     }
 }

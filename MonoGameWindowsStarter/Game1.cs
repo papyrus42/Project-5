@@ -1,6 +1,11 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using ClassLibrary;
+using System.Collections.Generic;
+using System.Linq;
+using System;
+using System.Diagnostics;
 
 namespace MonoGameWindowsStarter
 {
@@ -11,6 +16,8 @@ namespace MonoGameWindowsStarter
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        Stuff stuff;
+        Texture2D pixel;
 
         public Game1()
         {
@@ -39,6 +46,10 @@ namespace MonoGameWindowsStarter
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
+            stuff = Content.Load<Stuff>("stuff");
+            pixel = Content.Load<Texture2D>("rando boy");
+            Console.WriteLine(stuff.points[0].X);
+            Debug.WriteLine(stuff.points[0].X + " " + stuff.points[0].Y);
 
             // TODO: use this.Content to load your game content here
         }
@@ -61,7 +72,7 @@ namespace MonoGameWindowsStarter
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
-
+            Console.WriteLine(stuff.points[0].X);
             // TODO: Add your update logic here
 
             base.Update(gameTime);
@@ -76,7 +87,14 @@ namespace MonoGameWindowsStarter
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
-
+            spriteBatch.Begin();
+            foreach(Vector2 p in stuff.points)
+            {
+                spriteBatch.Draw(pixel, p, Color.Red);
+                Debug.WriteLine(p.X + " " + p.Y);
+            }
+            
+            spriteBatch.End();
             base.Draw(gameTime);
         }
     }
